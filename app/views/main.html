@@ -7,6 +7,11 @@
     <div class="well">
       <div class="input-append">
         <form name="form" novalidate>
+          <select ng-init="task.priority = 'high'" ng-model="task.priority" class="span2">
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
           <input  name="name" ng-model="task.name" required ng-minlength="3" id="appendedInputButton" type="text" class="span6" placeholder="Add new task here">
           <button ng-click="add(task); task.name = '';" ng-disabled="form.$invalid" class="btn btn-primary js-add" type="button">Add</button>
         </form>
@@ -29,6 +34,7 @@
           <td>{{$index + 1}}</td>
           <td>
             {{task.name}}
+            <span class="priority label">{{task.priority}}</span>
           </td>
           <td>
             <button ng-click="remove($index, thing)" class="btn btn-success js-done">Done</button>
