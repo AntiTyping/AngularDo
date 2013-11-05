@@ -53,5 +53,12 @@ describe('Scenarios:', function() {
       });
     });
   });
+
+  describe("Mark task as done", function() {
+    it("should remove the task from the task list", function() {
+      element('button.js-done:last').click();
+      expect(repeater('tr.task').count()).toBe(2);
+    });
+  });
 });
 
