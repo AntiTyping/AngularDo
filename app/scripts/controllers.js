@@ -14,4 +14,8 @@ angular.module('AngularDoApp')
       newTask.name = task.name;
       $scope.tasks.push(newTask);
     };
+
+    $scope.remove = function(index, task) {
+      $scope.tasks.splice(index, 1);
+    };
   });
