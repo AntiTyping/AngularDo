@@ -21,6 +21,7 @@
         <tr>
           <th class="span1">#</th>
           <th >Task</th>
+          <th class="span1"></th>
         </tr>
       </thead>
       <tbody>
@@ -28,6 +29,9 @@
           <td>{{$index + 1}}</td>
           <td>
             {{task.name}}
+          </td>
+          <td>
+            <button ng-click="remove($index, task)" class="btn btn-success js-done">Done</button>
           </td>
         </tr>
       </tbody>
