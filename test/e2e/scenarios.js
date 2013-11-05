@@ -25,12 +25,17 @@ describe('Scenarios:', function() {
     describe("when the new task is valid", function() {
       beforeEach(function() {
         input('task.name').enter("New task");
+        select('task.priority').option("medium");
         element('button.js-add').click();
       });
 
       it("should add it to the list", function() {
         expect(element('tr.task:last').text()).toMatch(/New task/);
         expect(repeater('tr.task').count()).toBe(4);
+      });
+
+      it("should set priority", function() {
+        expect(element("span.priority:last").text()).toMatch(/medium/);
       });
 
       it('should clear the new task box', function() {
