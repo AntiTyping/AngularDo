@@ -9,10 +9,25 @@ describe('Controllers', function () {
    });
 
    describe("TaskCtrl", function() {
-     it('should populate scope with list of tasks', inject(function ($controller, $rootScope) {
-       var scope = $rootScope.$new();
-       $controller('TaskCtrl', { $scope: scope });
-       expect(scope.tasks.length).toEqual(3);
+     var TaskCtrl, scope;
+
+     beforeEach(inject(function ($controller, $rootScope) {
+       scope = $rootScope.$new();
+       TaskCtrl = $controller('TaskCtrl', { $scope: scope });
      }));
+
+     it('should populate scope with list of tasks', function() {
+       expect(scope.tasks.length).toEqual(3);
+     });
+
+     describe("add", function() {
+       var task;
+
+       it("should adds new task to task list", function() {
+         task = jasmine.createSpy("task");
+         scope.add(task);
+         expect(scope.tasks.length).toEqual(4);
+       });
+     });
    });
 });
