@@ -97,5 +97,12 @@ describe('Scenarios:', function() {
     });
   });
 
+  describe("Task search", function() {
+    it("should only display task that match the keyword", function() {
+      input("query.name").enter("Task 1");
+      expect(repeater('tr.task').count()).toBe(1);
+      expect(element('tr.task').text()).toMatch(/Task 1/);
+    });
+  });
 });
 
