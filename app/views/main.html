@@ -3,21 +3,34 @@
 
   </div>
   <div class="span9">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th class="span1">#</th>
-            <th >Task</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="task in tasks" class="task">
-            <td>{{$index + 1}}</td>
-            <td>
-              {{task.name}}
-            </td>
-          </tr>
-        </tbody>
-      </table>
+
+    <div class="well">
+      <div class="input-append">
+        <form name="form" novalidate>
+          <input  name="name" ng-model="task.name" required ng-minlength="3" id="appendedInputButton" type="text" class="span6" placeholder="Add new task here">
+          <button ng-click="add(task); task.name = '';" ng-disabled="form.$invalid" class="btn btn-primary js-add" type="button">Add</button>
+        </form>
+      </div>
+      <div ng-show="form.name.$dirty && form.name.$invalid && form.name.$error.minlength" class="alert alert-error">
+        Task name should be at least 3 characters long.
+      </div>
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="span1">#</th>
+          <th >Task</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="task in tasks" class="task">
+          <td>{{$index + 1}}</td>
+          <td>
+            {{task.name}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
