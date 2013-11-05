@@ -6,5 +6,12 @@ angular.module('AngularDoApp')
       {name: 'Task 1'},
       {name: 'Task 2'},
       {name: 'Task 3'},
+
     ];
+
+    $scope.add = function(task) {
+      var newTask = new Object();
+      newTask.name = task.name;
+      $scope.tasks.push(newTask);
+    };
   });
