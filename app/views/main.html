@@ -1,5 +1,14 @@
 <div class="row" ng-controller="TaskCtrl">
   <div class="span3">
+    <div class="well" style="max-width: 340px; padding: 8px 0;">
+      <ul class="nav nav-list">
+        <li class="nav-header">Priority</li>
+        <li ng-class="{'active': query.priority == ''}"><a ng-init="query.priority = ''" ng-click="query.priority = ''; $event.preventDefault()" href="#" class="priority">All</a></li>
+        <li ng-class="{'active': query.priority == 'high'}"><a ng-click="query.priority = 'high'; $event.preventDefault()" href="#" class="priority">high</a></li>
+        <li ng-class="{'active': query.priority == 'medium'}"><a ng-model="query.priority" ng-click="query.priority = 'medium'; $event.preventDefault()" href="#" class="priority">medium</a></li>
+        <li ng-class="{'active': query.priority == 'low'}"><a ng-click="query.priority = 'low'; $event.preventDefault()" href="#" class="priority">low</a></li>
+      </ul>
+    </div>
 
   </div>
   <div class="span9">
@@ -30,7 +39,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="task in tasks" class="task">
+        <tr ng-repeat="task in tasks | filter:query" class="task">
           <td>{{$index + 1}}</td>
           <td>
             {{task.name}}
