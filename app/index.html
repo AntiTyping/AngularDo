@@ -35,6 +35,12 @@
               <li ng-init="tab = 'home'" ng-click="tab = 'home'" ng-class="{'active': tab == 'home'}"><a href="#">Home</a></li>
               <li ng-click="tab = 'about'" ng-class="{'active': tab == 'about'}"><a href="#/about">About</a></li>
             </ul>
+            <form class="navbar-form form-search pull-right">
+              <div class="input-append">
+                <input ng-init="query.tags = ''" ng-model="query.name" type="text" class="span2 search-query" placeholder="Search" >
+                <button ng-click="query.name =''" class="btn js-clear">Clear</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
