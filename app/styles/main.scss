@@ -1,0 +1,29 @@
+$iconSpritePath: "../images/glyphicons-halflings.png";
+$iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
+
+@import "bootstrap-sass/lib/bootstrap";
+
+/* Put your CSS here */
+html, body {
+  margin: 20px;
+}
+
+body {
+    background: #fafafa;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333;
+}
+
+.centered { text-align: center; }
+
+.row { padding-top: 20px }
+
+.item td {
+  font-size: 16px;
+  line-height: 27px;
+}
+
+.tags {
+  font-size: 12px;
+  line-height: 17px;
+}
