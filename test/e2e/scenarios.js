@@ -7,11 +7,11 @@ describe('Scenarios:', function() {
 
   describe("Navigation", function() {
     it("should have Home link", function() {
-      expect(element("ul.nav li:first").text()).toEqual("Home");
+      expect(element("ul.nav:first li:first").text()).toEqual("Home");
     });
 
     it("should have About link", function() {
-      expect(element("ul.nav li:last").text()).toEqual("About");
+      expect(element("ul.nav:first li:last").text()).toEqual("About");
     });
   });
 
@@ -19,6 +19,7 @@ describe('Scenarios:', function() {
     it('should display list of tasks', function() {
       expect(repeater('tr.task').count()).toBe(3);
     });
+
   });
 
   describe("Add a new task", function() {
@@ -65,5 +66,36 @@ describe('Scenarios:', function() {
       expect(repeater('tr.task').count()).toBe(2);
     });
   });
+
+  describe("Filter by priority", function() {
+    describe("when high priority is selected", function() {
+      it("should display only high priority tasks", function() {
+        element("a.priority:contains('high')").click();
+        expect(repeater('tr.task').count()).toBe(1);
+      });
+    });
+
+    describe("when high priority is selected", function() {
+      it("should display only medium priority tasks", function() {
+        element("a.priority:contains('medium')").click();
+        expect(repeater('tr.task').count()).toBe(1);
+      });
+    });
+
+    describe("when high priority is selected", function() {
+      it("should display only medium priority tasks", function() {
+        element("a.priority:contains('low')").click();
+        expect(repeater('tr.task').count()).toBe(1);
+      });
+    });
+
+    describe("when no priority is selected", function() {
+      it("should display all tasks", function() {
+        element("a.priority:contains('All')").click();
+        expect(repeater('tr.task').count()).toBe(3);
+      });
+    });
+  });
+
 });
 
