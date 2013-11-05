@@ -24,9 +24,11 @@ describe('Controllers', function () {
        var task;
 
        it("should adds new task to task list", function() {
-         task = jasmine.createSpy("task");
+         task = {name: 'Task 4', priority: 'high'}
          scope.add(task);
          expect(scope.tasks.length).toEqual(4);
+         expect(scope.tasks[3].name).toEqual('Task 4');
+         expect(scope.tasks[3].priority).toEqual('high');
        });
      });
 
