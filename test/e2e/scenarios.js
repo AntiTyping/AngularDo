@@ -20,5 +20,38 @@ describe('Scenarios:', function() {
       expect(repeater('tr.task').count()).toBe(3);
     });
   });
+
+  describe("Add a new task", function() {
+    describe("when the new task is valid", function() {
+      beforeEach(function() {
+        input('task.name').enter("New task");
+        element('button.js-add').click();
+      });
+
+      it("should add it to the list", function() {
+        expect(element('tr.task:last').text()).toMatch(/New task/);
+        expect(repeater('tr.task').count()).toBe(1);
+      });
+
+      it('should clear the new task box', function() {
+        expect(input('task.name').val()).toEqual('');
+      });
+    });
+
+    describe("when the new task is invalid", function() {
+      beforeEach(function() {
+        input('task.name').enter("");
+        element('button.js-add').click();
+      });
+
+      it("should leave the task list unchanged", function() {
+        expect(repeater('tr.task').count()).toBe(0);
+      });
+
+      it("should display an error message", function() {
+        expect(element('div.alert').count()).toBe(1);
+      });
+    });
+  });
 });
 
