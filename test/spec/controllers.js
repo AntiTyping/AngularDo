@@ -29,5 +29,13 @@ describe('Controllers', function () {
          expect(scope.tasks.length).toEqual(4);
        });
      });
+
+     describe("remove", function() {
+       it("should remove task to task list", function() {
+         var task = jasmine.createSpy("task");
+         scope.remove(1, task);
+         expect(scope.tasks.length).toEqual(1);
+       });
+     });
    });
 });
