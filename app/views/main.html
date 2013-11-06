@@ -34,12 +34,12 @@
       <thead>
         <tr>
           <th class="span1">#</th>
-          <th >Task</th>
+          <th class="js-task-counter">{{filtered.length | pluralize:'task'}}</th>
           <th class="span1"></th>
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="task in tasks | filter:query" class="task">
+        <tr ng-repeat="task in filtered = (tasks | filter:query)" class="task">
           <td>{{$index + 1}}</td>
           <td>
             {{task.name}}
