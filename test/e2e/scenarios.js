@@ -123,5 +123,11 @@ describe('Scenarios:', function() {
       expect(element('tr.task').text()).toMatch(/Medium priority task/);
     });
   });
+
+  describe("Task counter", function() {
+    it("should display number of visible tasks", function() {
+      expect(element(".js-task-counter").text()).toEqual("3 tasks");
+    });
+  });
 });
 
