@@ -3,6 +3,25 @@
 describe('Scenarios:', function() {
   beforeEach(function() {
     browser().navigateTo('/proxy/');
+    element('table').query(function(table, done) {
+      var children = table.children();
+      if(children.length > 1) {
+        var elements = table.find('button.js-done');
+        elements.click();
+      };
+      done();
+    });
+    input('task.name').enter("Medium priority task");
+    select('task.priority').option("medium");
+    element('button.js-add').click();
+
+    input('task.name').enter("Low priority task");
+    select('task.priority').option("low");
+    element('button.js-add').click();
+
+    input('task.name').enter("High priority task");
+    select('task.priority').option("high");
+    element('button.js-add').click();
   });
 
   describe("Navigation", function() {
@@ -99,9 +118,9 @@ describe('Scenarios:', function() {
 
   describe("Task search", function() {
     it("should only display task that match the keyword", function() {
-      input("query.name").enter("Task 1");
+      input("query.name").enter("Medium");
       expect(repeater('tr.task').count()).toBe(1);
-      expect(element('tr.task').text()).toMatch(/Task 1/);
+      expect(element('tr.task').text()).toMatch(/Medium priority task/);
     });
   });
 });
