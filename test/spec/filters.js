@@ -4,8 +4,12 @@ describe('Filters', function() {
 
    beforeEach(module('AngularDoApp'));
 
-   it("should be true", function() {
-     expect(true).toEqual(true);
+   describe('pluralizeFilter', function() {
+     it('should return string length', inject(function(pluralizeFilter) {
+       expect(pluralizeFilter(0, "apple")).toBe('No apples');
+       expect(pluralizeFilter(1, "apple")).toBe('1 apple');
+       expect(pluralizeFilter(2, "apple")).toBe('2 apples');
+     }));
    });
 });
 
